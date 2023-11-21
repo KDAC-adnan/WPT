@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <nav>
+        <h1>Calculator</h1>
+      </nav>
+    </header>
+    <section>
+      <div class="calculator-body">
+        <table>
+          <tr>
+            <td>Enter First Number</td>
+            <td><input type="number" id="first-number" /></td>
+          </tr>
+          <tr>
+            <td>Enter Seconde Number</td>
+            <td><input type="number" id="second-number" /></td>
+          </tr>
+          <tr>
+            <td>Result</td>
+            <td><span class="result"></span></td>
+          </tr>
+        </table>
+        <button onclick="addition()" class="btn addition">Addition</button>
+        <button onclick="subtraction()" class="btn subtraction">
+          Subtraction
+        </button>
+        <button onclick="division()" class="btn division">Division</button>
+        <button onclick="multiplication()" class="btn multiplication">
+          Multiplication
+        </button>
+      </div>
+    </section>
+    <footer class="footer">
+      <span class="copyright"></span>
+    </footer>
+    <script>
+      const date = new Date();
+      let para = document.querySelector(".copyright");
+      para.textContent = `Copyright @ ${date.getFullYear()} AMK`;
+      function addition() {
+        let num1 = parseInt(document.getElementById("first-number").value);
+        let num2 = parseInt(document.getElementById("second-number").value);
+        if (!isNaN(num1) && !isNaN(num2)) {
+          let result = document.querySelector(".result");
+          result.textContent = `${num1 + num2}`;
+        } else {
+          console.log("Invalid input. Please enter valid numbers.");
+        }
+      }
+      function subtraction() {
+        let num1 = parseInt(document.getElementById("first-number").value);
+        let num2 = parseInt(document.getElementById("second-number").value);
+        if (!isNaN(num1) && !isNaN(num2)) {
+            let result = document.querySelector(".result");
+          result.textContent = `${num1-num2}`;
+        } else {
+          console.log("Invalid input. Please enter valid numbers.");
+        }
+      }
+      function multiplication() {
+        let num1 = parseInt(document.getElementById("first-number").value);
+        let num2 = parseInt(document.getElementById("second-number").value);
+        if (!isNaN(num1) && !isNaN(num2)) {
+            let result = document.querySelector(".result");
+          result.textContent = `${num1*num2}`;
+        } else {
+          console.log("Invalid input. Please enter valid numbers.");
+        }
+      }
+      function division() {
+        let num1 = parseInt(document.getElementById("first-number").value);
+        let num2 = parseInt(document.getElementById("second-number").value);
+        if (!isNaN(num1) && !isNaN(num2)) {
+            let result = document.querySelector(".result");
+          result.textContent = `${num1 / num2}`;
+        } else {
+          console.log("Invalid input. Please enter valid numbers.");
+        }
+      }
+    </script>
+  </body>
+</html>

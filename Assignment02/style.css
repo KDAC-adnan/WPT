@@ -1,0 +1,41 @@
+
+section
+{
+    background-color: #F1EAFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.header
+{
+    padding-top: 10px;
+    margin-top: 0px;
+    text-align: center;
+    text-decoration: underline;
+    height: 80px;
+    background-color: #DCBFFF;
+}
+
+.calculator-body
+{
+    height: 80vh;
+    width: 80vh;
+    background-color: #fff;
+    box-shadow: 2px 2px 2px;
+}
+
+.footer
+{
+    display: flex;
+    justify-content: center;
+    margin-top:1%;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.btn
+{
+    height: 40px;
+    width: 100px;
+}
+
