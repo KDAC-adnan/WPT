@@ -14,53 +14,64 @@
     </header>
     <section>
       <div class="calculator-body">
-        <table>
-          <tr>
-            <td>Enter First Number</td>
-            <td><input type="number" id="first-number" /></td>
-          </tr>
-          <tr>
-            <td>Enter Seconde Number</td>
-            <td><input type="number" id="second-number" /></td>
-          </tr>
-          <tr>
-            <td>Result</td>
-            <td><span class="result"></span></td>
-          </tr>
-        </table>
-        <button onclick="addition()" class="btn addition">Addition</button>
-        <button onclick="subtraction()" class="btn subtraction">
-          Subtraction
-        </button>
-        <button onclick="division()" class="btn division">Division</button>
-        <button onclick="multiplication()" class="btn multiplication">
-          Multiplication
-        </button>
+        <div class="table-container">
+          <table>
+            <tr>
+              <td>Enter First Number</td>
+              <td><input type="number" id="first-number" /></td>
+            </tr>
+            <tr>
+              <td>Enter Seconde Number</td>
+              <td><input type="number" id="second-number" /></td>
+            </tr>
+            <tr>
+              <td>Result</td>
+              <td><input type="number" id="result" disabled /></td>
+            </tr>
+          </table>
+        </div>
+        <div class="buttons-container">
+          <button onclick="addition()" class="btn addition">Addition</button>
+          <button onclick="subtraction()" class="btn subtraction">
+            Subtraction
+          </button>
+          <button onclick="division()" class="btn division">Division</button>
+          <button onclick="multiplication()" class="btn multiplication">
+            Multiplication
+          </button>
+        </div>
+        <div class="reset-container">
+          <button onclick="reset()" class="btn reset">Reset</button>
+        </div>
       </div>
     </section>
-    <footer class="footer">
+    <div class="footer-container">
       <span class="copyright"></span>
-    </footer>
+    </div>
     <script>
       const date = new Date();
+
+      //Copy right in footer section
       let para = document.querySelector(".copyright");
-      para.textContent = `Copyright @ ${date.getFullYear()} AMK`;
+      para.textContent = `Copyright @ ${date.getFullYear()} Adnan khan`;
+
+      //Function for all calculations
       function addition() {
         let num1 = parseInt(document.getElementById("first-number").value);
         let num2 = parseInt(document.getElementById("second-number").value);
         if (!isNaN(num1) && !isNaN(num2)) {
-          let result = document.querySelector(".result");
-          result.textContent = `${num1 + num2}`;
+          let result = document.getElementById("result");
+          result.value = `${num1 + num2}`;
         } else {
-          console.log("Invalid input. Please enter valid numbers.");
+          console.assert("Invalid input. Please enter valid numbers.");
         }
       }
       function subtraction() {
         let num1 = parseInt(document.getElementById("first-number").value);
         let num2 = parseInt(document.getElementById("second-number").value);
         if (!isNaN(num1) && !isNaN(num2)) {
-            let result = document.querySelector(".result");
-          result.textContent = `${num1-num2}`;
+          let result = document.getElementById("result");
+          result.value = `${num1 - num2}`;
         } else {
           console.log("Invalid input. Please enter valid numbers.");
         }
@@ -69,8 +80,8 @@
         let num1 = parseInt(document.getElementById("first-number").value);
         let num2 = parseInt(document.getElementById("second-number").value);
         if (!isNaN(num1) && !isNaN(num2)) {
-            let result = document.querySelector(".result");
-          result.textContent = `${num1*num2}`;
+          let result = document.getElementById("result");
+          result.value = `${num1 * num2}`;
         } else {
           console.log("Invalid input. Please enter valid numbers.");
         }
@@ -79,11 +90,17 @@
         let num1 = parseInt(document.getElementById("first-number").value);
         let num2 = parseInt(document.getElementById("second-number").value);
         if (!isNaN(num1) && !isNaN(num2)) {
-            let result = document.querySelector(".result");
-          result.textContent = `${num1 / num2}`;
+          let result = document.getElementById("result");
+          result.value = `${num1 / num2}`;
         } else {
           console.log("Invalid input. Please enter valid numbers.");
         }
+      }
+
+      function reset() {
+        document.getElementById("first-number").value = "";
+        document.getElementById("second-number").value = "";
+        document.getElementById("result").value = "";
       }
     </script>
   </body>
