@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="common.css" />
+    <title>Sunbeam</title>
+  </head>
+  <body>
+    <div id="outer-container">
+      <div id="image-container">
+        <img src="sunbeam.png" alt="" srcset="" />
+      </div>
+      <div id="text-container">
+        <div class="field">
+          <span>Name:</span> <br />
+          <input type="text" />
+        </div>
+        <div class="field">
+          <span>Birthdate:</span> <br />
+          <input type="date" />
+        </div>
+        <div class="field">
+          <span>Email:</span> <br />
+          <input type="email" />
+        </div>
+        <div class="field">
+          <span>Password:</span><br />
+          <input type="password" />
+        </div>
+        <div class="field address">
+            <span>Address:</span>
+            <div id="state">
+                <select name="selectState"  id="selectState" onchange="populateCities()">
+                    <option value="selectstate">select state</option>
+                </select>
+            </div>
+            <div class="city">
+                <select name="cities"  id="selectCity">
+                <option value="1">select city</option>
+                </select>
+            </div>
+        </div>
+        <div class="field">
+          <span>Gender</span> <br />
+          <input type="radio" name="Gender"/>Male
+          <input type="radio" name="Gender"/>Female
+          <input type="radio" name="Gender"/>Other
+        </div>
+        <div class="field"><span>Upload Photo:</span> <br> <input type="file" /></div>
+        <div class="field">
+            <span>Select course</span> <br>
+            <select name="select course"  id="">
+            <option value="1">select course</option>
+            <option value="2">DAC</option>
+            <option value="3">DBDA</option>
+            <option value="4">DMC</option>
+            <option value="5">DITIS</option>
+        </select></div>
+      </div>
+      <div></div>
+    </div>
+
+  <script>
+    const indianStates = [
+    "Andhra Pradesh",
+    "Arunachal Pradesh",
+    "Assam",
+    "Bihar",
+    "Chhattisgarh",
+    "Goa",
+    "Gujarat",
+    "Haryana",
+    "Himachal Pradesh",
+    "Jharkhand",
+    "Karnataka",
+    "Kerala",
+    "Madhya Pradesh",
+    "Maharashtra",
+    "Manipur",
+    "Meghalaya",
+    "Mizoram",
+    "Nagaland",
+    "Odisha",
+    "Punjab",
+    "Rajasthan",
+    "Sikkim",
+    "Tamil Nadu",
+    "Telangana",
+    "Tripura",
+    "Uttar Pradesh",
+    "Uttarakhand",
+    "West Bengal",
+    "Andaman and Nicobar Islands",
+    "Chandigarh",
+    "Dadra and Nagar Haveli and Daman and Diu",
+    "Lakshadweep",
+    "Delhi",
+    "Puducherry"
+];
+
+const citiesByState = {
+    "Andhra Pradesh": ["Visakhapatnam", "Vijayawada", "Guntur", "Tirupati"],
+    "Arunachal Pradesh": ["Itanagar", "Naharlagun", "Pasighat", "Namsai"],
+    "Assam": ["Guwahati", "Dibrugarh", "Silchar", "Jorhat"],
+    "Bihar": ["Patna", "Gaya", "Bhagalpur", "Muzaffarpur"],
+    "Chhattisgarh": ["Raipur", "Bhilai", "Bilaspur", "Korba"],
+    "Goa": ["Panaji", "Vasco da Gama", "Margao", "Mapusa"],
+    "Gujarat": ["Ahmedabad", "Surat", "Vadodara", "Rajkot"],
+    "Haryana": ["Chandigarh", "Faridabad", "Gurgaon", "Hisar"],
+    "Himachal Pradesh": ["Shimla", "Dharamshala", "Kullu", "Manali"],
+    "Jharkhand": ["Ranchi", "Jamshedpur", "Dhanbad", "Bokaro Steel City"],
+    "Karnataka": ["Bangalore", "Mysore", "Hubli", "Mangalore"],
+    "Kerala": ["Thiruvananthapuram", "Kochi", "Kozhikode", "Thrissur"],
+    "Madhya Pradesh": ["Bhopal", "Indore", "Jabalpur", "Gwalior"],
+    "Maharashtra": ["Mumbai", "Pune", "Nagpur", "Nashik"],
+    "Manipur": ["Imphal", "Thoubal", "Bishnupur", "Churachandpur"],
+    "Meghalaya": ["Shillong", "Tura", "Nongpoh", "Jowai"],
+    "Mizoram": ["Aizawl", "Lunglei", "Saiha", "Champhai"],
+    "Nagaland": ["Kohima", "Dimapur", "Mokokchung", "Tuensang"],
+    "Odisha": ["Bhubaneswar", "Cuttack", "Rourkela", "Berhampur"],
+    "Punjab": ["Chandigarh", "Ludhiana", "Amritsar", "Jalandhar"],
+    "Rajasthan": ["Jaipur", "Jodhpur", "Udaipur", "Ajmer"],
+    "Sikkim": ["Gangtok", "Namchi", "Mangan", "Gyalshing"],
+    "Tamil Nadu": ["Chennai", "Coimbatore", "Madurai", "Trichy"],
+    "Telangana": ["Hyderabad", "Warangal", "Nizamabad", "Karimnagar"],
+    "Tripura": ["Agartala", "Udaipur", "Dharmanagar", "Kailasahar"],
+    "Uttar Pradesh": ["Lucknow", "Kanpur", "Agra", "Varanasi"],
+    "Uttarakhand": ["Dehradun", "Haridwar", "Roorkee", "Haldwani"],
+    "West Bengal": ["Kolkata", "Howrah", "Durgapur", "Asansol"],
+    "Andaman and Nicobar Islands": ["Port Blair", "Havelock Island", "Diglipur", "Mayabunder"],
+    "Chandigarh": ["Chandigarh"],
+    "Dadra and Nagar Haveli and Daman and Diu": ["Daman", "Diu", "Dadra", "Nagar Haveli"],
+    "Lakshadweep": ["Kavaratti", "Agatti", "Amini", "Andrott"],
+    "Delhi": ["New Delhi", "Noida", "Gurgaon", "Faridabad"],
+    "Puducherry": ["Puducherry", "Karaikal", "Mahe", "Yanam"]
+};
+
+    window.onload = function()
+    {
+        let refToState=document.getElementById("selectState");
+        for(i=0;i<indianStates.length;i++)
+        {
+            let opt=`<option value="${indianStates[i]}">${indianStates[i]}</option>`;
+            refToState.innerHTML+=opt;
+        }
+    }
+
+    function populateCities() {
+            const selectState = document.getElementById("selectState");
+            const selectedState = selectState.value;
+            const selectCity = document.getElementById("selectCity");
+
+            // Clear existing options
+            selectCity.innerHTML = '<option value="1">Select City</option>';
+
+            if (selectedState !== "") {
+                // Populate cities for the selected state
+                citiesByState[selectedState].forEach(city => {
+                    const option = document.createElement("option");
+                    option.value = city;
+                    option.text = city;
+                    selectCity.add(option);
+                });
+            }
+        }
+  </script>
+  </body>
+</html>
