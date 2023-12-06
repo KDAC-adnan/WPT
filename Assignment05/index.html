@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Customer Registration</title>
+    
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="jquery-ui.css">
+    <link rel="stylesheet" href="common.css">   
+</head>
+<body>
+    <div class="container con">
+        <div class="table-responsive">
+            <h1>Customer Registration</h1>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td>Cnum</td>
+                        <td><input type="number" id="cnum"></td>
+                        <td id="cnumError" class="error"></td>
+                    </tr>
+                    <tr>
+                        <td>Cname</td>
+                        <td><input type="text" id="cname"></td>
+                        <td id="cnameError" class="error"></td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td><input type="email" id="email"></td>
+                        <td id="emailError" class="error"></td>
+                    </tr>
+                    <tr>
+                        <td>Password</td>
+                        <td><input type="password" id="password"></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Confirm Password</td>
+                        <td><input type="password" id="cnfPassword"></td>
+                        <td id="cnfPasswordError" class="error"></td>
+                    </tr>
+                    <tr>
+                        <td>Mobile No</td>
+                        <td><input type="number" id="mobileNo"></td>
+                        <td id="mobileNoError" class="error"></td>
+                    </tr>
+                    <tr>
+                        <td>City</td>
+                        <td><input type="text" id="city"></td>
+                        <td id="cityError" class="error"></td>
+                    </tr>
+                    <tr>
+                        <td>State</td>
+                        <td>
+                            <select name="state" vaue="" id="state">
+                                <option value="">select state</option>
+                          </select>
+                        </td>
+                        <td id="stateError" class="error"></td>
+                    </tr>
+                    <tr>
+                        <td>Pincode</td>
+                        <td><input type="number" id="pincode"></td>
+                        <td id="pincodeError" class="error"></td>
+                    </tr>
+                    <tr>
+                        <td>Request payment mode</td>
+                        <td>
+                            <input type="checkbox" id="paymentMode" name="paymentMode" value="credit">  Credit
+                            <input type="checkbox" id="paymentMode" name="paymentMode" value="debt"> Debt
+                            <input type="checkbox" id="paymentMode" name="paymentMode" value="upi">  Upi
+                        </td>
+                        <td id="paymentModeError" class="error"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><Button class="btn btn-primary" onclick="submit()">Submit</Button></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="jquery-3.7.1.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
